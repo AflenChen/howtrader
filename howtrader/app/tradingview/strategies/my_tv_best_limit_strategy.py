@@ -127,6 +127,21 @@ class MyTVBestLimitStrategy(TVTemplate):
             self.target_volume = volume
             self.direction = Direction.LONG
 
+        elif action == 'l_1_t':
+            if self.pos < 0:
+                self.target_volume = volume + abs(self.pos)
+            else:
+                self.target_volume = volume
+            self.direction = Direction.LONG
+
+        elif action == 'l_2_t':
+            self.target_volume = volume
+            self.direction = Direction.LONG
+
+        elif action == 'l_3_t':
+            self.target_volume = volume
+            self.direction = Direction.LONG
+
         elif action == 's_1':
             if self.pos > 0:
                 self.target_volume = volume + self.pos
@@ -142,6 +157,21 @@ class MyTVBestLimitStrategy(TVTemplate):
             self.target_volume = volume
             self.direction = Direction.SHORT
 
+        elif action == 's_1_t':
+            if self.pos > 0:
+                self.target_volume = volume + self.pos
+            else:
+                self.target_volume = volume
+            self.direction = Direction.SHORT
+
+        elif action == 's_2_t':
+            self.target_volume = volume
+            self.direction = Direction.SHORT
+
+        elif action == 's_3_t':
+            self.target_volume = volume
+            self.direction = Direction.SHORT
+
         elif action == 'tp_1_l':
 
             if self.pos > 0:
@@ -153,6 +183,7 @@ class MyTVBestLimitStrategy(TVTemplate):
                     self.direction = Direction.SHORT
 
         elif action == 'tp_2_l':
+
             if self.pos > 0:
                 if self.pos >= volume:
                     self.target_volume = volume
@@ -162,6 +193,31 @@ class MyTVBestLimitStrategy(TVTemplate):
                     self.direction = Direction.SHORT
 
         elif action == 'tp_3_l':
+            if self.pos > 0:
+                self.target_volume = self.pos
+                self.direction = Direction.SHORT
+
+        elif action == 'tp_1_l_t':
+
+            if self.pos > 0:
+                if self.pos >= volume:
+                    self.target_volume = volume
+                    self.direction = Direction.SHORT
+                else:
+                    self.target_volume = self.pos
+                    self.direction = Direction.SHORT
+
+        elif action == 'tp_2_l_t':
+
+            if self.pos > 0:
+                if self.pos >= volume:
+                    self.target_volume = volume
+                    self.direction = Direction.SHORT
+                else:
+                    self.target_volume = self.pos
+                    self.direction = Direction.SHORT
+
+        elif action == 'tp_3_l_t':
             if self.pos > 0:
                 self.target_volume = self.pos
                 self.direction = Direction.SHORT
@@ -187,6 +243,31 @@ class MyTVBestLimitStrategy(TVTemplate):
                     self.direction = Direction.LONG
 
         elif action == 'tp_3_s':
+            if self.pos < 0:
+                self.target_volume = abs(self.pos)
+                self.direction = Direction.LONG
+
+        elif action == 'tp_1_s_t':
+            if self.pos < 0:
+                if abs(self.pos) >= volume:
+                    self.target_volume = volume
+                    self.direction = Direction.LONG
+
+                else:
+                    self.target_volume = abs(self.pos)
+                    self.direction = Direction.LONG
+
+        elif action == 'tp_2_s_t':
+            if self.pos < 0:
+                if abs(self.pos) >= volume:
+                    self.target_volume = volume
+                    self.direction = Direction.LONG
+
+                else:
+                    self.target_volume = abs(self.pos)
+                    self.direction = Direction.LONG
+
+        elif action == 'tp_3_s_t':
             if self.pos < 0:
                 self.target_volume = abs(self.pos)
                 self.direction = Direction.LONG
