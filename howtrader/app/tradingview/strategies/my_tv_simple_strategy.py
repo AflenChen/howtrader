@@ -143,6 +143,13 @@ class MyTVSimpleStrategy(TVTemplate):
             self.direction = Direction.LONG
 
         elif action == 'l_2':
+            if self.pos < 0:
+                self.target_volume = volume + abs(self.pos)
+            else:
+                self.target_volume = volume
+            self.direction = Direction.LONG
+
+        elif action == 'l_3':
             self.target_volume = volume
             self.direction = Direction.LONG
 
@@ -154,6 +161,13 @@ class MyTVSimpleStrategy(TVTemplate):
             self.direction = Direction.SHORT
 
         elif action == 's_2':
+            if self.pos > 0:
+                self.target_volume = volume + self.pos
+            else:
+                self.target_volume = volume
+            self.direction = Direction.SHORT
+
+        elif action == 's_3':
             self.target_volume = volume
             self.direction = Direction.SHORT
 
@@ -168,6 +182,16 @@ class MyTVSimpleStrategy(TVTemplate):
                     self.direction = Direction.SHORT
 
         elif action == 'tp_2_l':
+
+            if self.pos > 0:
+                if self.pos >= volume:
+                    self.target_volume = volume
+                    self.direction = Direction.SHORT
+                else:
+                    self.target_volume = self.pos
+                    self.direction = Direction.SHORT
+
+        elif action == 'tp_3_l':
             if self.pos > 0:
                 self.target_volume = self.pos
                 self.direction = Direction.SHORT
@@ -183,6 +207,16 @@ class MyTVSimpleStrategy(TVTemplate):
                     self.direction = Direction.LONG
 
         elif action == 'tp_2_s':
+            if self.pos < 0:
+                if abs(self.pos) >= volume:
+                    self.target_volume = volume
+                    self.direction = Direction.LONG
+
+                else:
+                    self.target_volume = abs(self.pos)
+                    self.direction = Direction.LONG
+
+        elif action == 'tp_3_s':
             if self.pos < 0:
                 self.target_volume = abs(self.pos)
                 self.direction = Direction.LONG
