@@ -5,7 +5,7 @@ from howtrader.trader.ui import MainWindow, create_qapp
 from howtrader.trader.setting import SETTINGS
 from howtrader.gateway.binance import BinanceUsdtGateway, BinanceSpotGateway, BinanceInverseGateway
 
-from howtrader.app.cta_strategy import CtaStrategyApp
+# from howtrader.app.cta_strategy import CtaStrategyApp
 # from howtrader.app.data_manager import DataManagerApp
 # from howtrader.app.data_recorder import DataRecorderApp
 # from howtrader.app.algo_trading import AlgoTradingApp
@@ -52,10 +52,10 @@ def main():
     qapp = create_qapp()
     main_engine = MainEngine(event_engine)
 
-    main_engine.add_gateway(BinanceSpotGateway)
+    # main_engine.add_gateway(BinanceSpotGateway)
     main_engine.add_gateway(BinanceUsdtGateway)
-    main_engine.add_gateway(BinanceInverseGateway)
-    main_engine.add_app(CtaStrategyApp)
+    # main_engine.add_gateway(BinanceInverseGateway)
+    # main_engine.add_app(CtaStrategyApp)
     main_engine.add_app(TradingViewApp)
 
     # if you don't use
